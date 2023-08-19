@@ -12,6 +12,7 @@ namespace RTF_redactor
 {
     public partial class Form1 : Form
     {
+        Bitmap bitmap;
         public Form1()
         {
             InitializeComponent();
@@ -22,12 +23,12 @@ namespace RTF_redactor
         private void FormTheme(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
-            bool isDay = currentTime.Hour >= 6 &  currentTime.Hour <= 18;
+            bool isDay = currentTime.Hour >= 6 & currentTime.Hour <= 18;
             if (isDay)
             {
                 BackColor = Color.White;
                 ForeColor = Color.Black;
-               
+
             }
             else
             {
@@ -135,7 +136,31 @@ namespace RTF_redactor
                 }
             }
         }
+       private Image openPicture()
+        {
 
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Файлы изображений (*.bmp; *.jpg; *.jpeg; *.png; *.gif)|*.bmp; *.jpg; *.jpeg; *.png; *.gif";
+            openFileDialog.Title = "Открыть файл изображения";
+
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                string imagePath = openFileDialog.FileName;
+                Image image = Image.FromFile(imagePath);
+
+                return image;
+            }
+            else return null;   
+        }
+
+        private void backgroundBtn_Click(object sender, EventArgs e)
+        {
+            Image backGround = openPicture();
+            this.BackgroundImage = backGround;
+        }
     }
  
 }

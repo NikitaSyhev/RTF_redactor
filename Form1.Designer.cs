@@ -37,6 +37,7 @@
             this.sizeBtn = new System.Windows.Forms.Button();
             this.textSize = new System.Windows.Forms.TextBox();
             this.colorBtn = new System.Windows.Forms.Button();
+            this.backgroundBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openBtn
@@ -124,11 +125,22 @@
             this.colorBtn.UseVisualStyleBackColor = true;
             this.colorBtn.Click += new System.EventHandler(this.colorBtn_Click);
             // 
+            // backgroundBtn
+            // 
+            this.backgroundBtn.Location = new System.Drawing.Point(12, 403);
+            this.backgroundBtn.Name = "backgroundBtn";
+            this.backgroundBtn.Size = new System.Drawing.Size(122, 35);
+            this.backgroundBtn.TabIndex = 9;
+            this.backgroundBtn.Text = "Картинка для фона";
+            this.backgroundBtn.UseVisualStyleBackColor = true;
+            this.backgroundBtn.Click += new System.EventHandler(this.backgroundBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.backgroundBtn);
             this.Controls.Add(this.colorBtn);
             this.Controls.Add(this.textSize);
             this.Controls.Add(this.sizeBtn);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.Button sizeBtn;
         private System.Windows.Forms.TextBox textSize;
         private System.Windows.Forms.Button colorBtn;
+        private System.Windows.Forms.Button backgroundBtn;
     }
 }
 
