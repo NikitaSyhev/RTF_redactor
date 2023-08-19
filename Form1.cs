@@ -27,11 +27,13 @@ namespace RTF_redactor
             {
                 BackColor = Color.White;
                 ForeColor = Color.Black;
+               
             }
             else
             {
                 BackColor = Color.Black;
-                ForeColor = Color.White;
+                ForeColor = Color.Red;
+
             }
         }
 
@@ -58,6 +60,82 @@ namespace RTF_redactor
             }
             return "none";
         }
+
+        private void typeFont_MouseClick(object sender, MouseEventArgs e)
+        {
+            var defaulFont = TextBox.Font;
+            if (TextBox.SelectedText != null) // работает если мы выделили текст
+            {
+                if (((Button)sender).Text == "Жирный")
+                {
+
+                    TextBox.SelectionFont = new Font(defaulFont.FontFamily,
+                        defaulFont.Size, FontStyle.Bold);
+
+                }
+                else
+                {
+                    if (((Button)sender).Text == "Курсив")
+                    {
+                        TextBox.SelectionFont = new Font(defaulFont.FontFamily,
+                        defaulFont.Size, FontStyle.Italic);
+                    }
+                    else
+                    {
+                        TextBox.SelectionFont = new Font(defaulFont.FontFamily,
+                        defaulFont.Size, FontStyle.Regular);
+                    }
+                }
+
+            }
+        }
+
+        private void textSize_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            int SizeText = Convert.ToInt32(textBox.Text);
+            var defaulFont = TextBox.Size;
+            if (TextBox.SelectedText != null)
+            {
+
+                TextBox.SelectionFont = new Font(TextBox.SelectionFont.FontFamily, SizeText, TextBox.SelectionFont.Style);
+            }
+        }
+
+        private void colorBtn_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.ShowDialog();
+            TextBox.SelectionColor = colorDialog.Color;
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void SaveFile()
+        {
+            MessageBox.Show("Сохранить как...");
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.Title = "Сохранить как...";
+            sf.OverwritePrompt = true;
+            sf.CheckFileExists = true;
+            sf.Filter = "RTF Files | *.rtf";
+            sf.ShowHelp = true;
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    TextBox.SaveFile(sf.FileName);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+
     }
  
 }
