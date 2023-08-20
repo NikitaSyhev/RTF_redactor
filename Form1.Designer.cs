@@ -45,6 +45,9 @@
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.историяФайловToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.буферОбменаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bufferForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,7 +185,8 @@
             // menuStrip3
             // 
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.историяФайловToolStripMenuItem});
+            this.историяФайловToolStripMenuItem,
+            this.буферОбменаToolStripMenuItem});
             this.menuStrip3.Location = new System.Drawing.Point(0, 0);
             this.menuStrip3.Name = "menuStrip3";
             this.menuStrip3.Size = new System.Drawing.Size(800, 24);
@@ -200,9 +204,24 @@
             // openHistory
             // 
             this.openHistory.Name = "openHistory";
-            this.openHistory.Size = new System.Drawing.Size(180, 22);
+            this.openHistory.Size = new System.Drawing.Size(121, 22);
             this.openHistory.Text = "Открыть";
             this.openHistory.Click += new System.EventHandler(this.openHistory_Click);
+            // 
+            // буферОбменаToolStripMenuItem
+            // 
+            this.буферОбменаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bufferForm});
+            this.буферОбменаToolStripMenuItem.Name = "буферОбменаToolStripMenuItem";
+            this.буферОбменаToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.буферОбменаToolStripMenuItem.Text = "Буфер обмена";
+            // 
+            // bufferForm
+            // 
+            this.bufferForm.Name = "bufferForm";
+            this.bufferForm.Size = new System.Drawing.Size(180, 22);
+            this.bufferForm.Text = "Открыть";
+            this.bufferForm.Click += new System.EventHandler(this.bufferForm_Click);
             // 
             // Form1
             // 
@@ -254,6 +273,9 @@
         private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.ToolStripMenuItem историяФайловToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openHistory;
+        private System.Windows.Forms.ToolStripMenuItem буферОбменаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bufferForm;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

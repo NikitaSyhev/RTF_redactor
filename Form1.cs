@@ -17,9 +17,10 @@ namespace RTF_redactor
         public Form1()
         {
             InitializeComponent();
-           
+            form2 = new Form2();
 
         }
+        Form2 form2;
 
         private void FormTheme(object sender, EventArgs e)
         {
@@ -45,11 +46,12 @@ namespace RTF_redactor
             if (result != "none")
             {
                 TextBox.LoadFile(result);
+                
               
             }
 
         }
-
+        
         private string OpenFile()
         {
             using (OpenFileDialog of = new OpenFileDialog())
@@ -92,22 +94,26 @@ namespace RTF_redactor
                         defaulFont.Size, FontStyle.Bold);
 
                 }
-                if (((Button)sender).Text == "Курсив")
-                {
-                    TextBox.SelectionFont = new Font(defaulFont.FontFamily,
-                        defaulFont.Size, FontStyle.Italic);
-                }
                 if (((Button)sender).Text == "Подчеркнутый")
                 {
+
                     TextBox.SelectionFont = new Font(defaulFont.FontFamily,
                         defaulFont.Size, FontStyle.Underline);
+
                 }
                 else
                 {
+                    if (((Button)sender).Text == "Курсив")
+                    {
+                        TextBox.SelectionFont = new Font(defaulFont.FontFamily,
+                        defaulFont.Size, FontStyle.Italic);
+                    }
+                    else
+                    {
                         TextBox.SelectionFont = new Font(defaulFont.FontFamily,
                         defaulFont.Size, FontStyle.Regular);
+                    }
                 }
-                
 
             }
         }
@@ -212,6 +218,13 @@ namespace RTF_redactor
                 }
             }
 
+        }
+
+        private void bufferForm_Click(object sender, EventArgs e)
+        {
+            
+            form2.Show();
+            
         }
     }
  
