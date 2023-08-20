@@ -12,7 +12,8 @@ namespace RTF_redactor
 {
     public partial class Form1 : Form
     {
-        Bitmap bitmap;
+
+        private List<string> recentFiles = new List<string>(); // список редактивруемых файлов
         public Form1()
         {
             InitializeComponent();
@@ -44,7 +45,9 @@ namespace RTF_redactor
             if (result != "none")
             {
                 TextBox.LoadFile(result);
+              
             }
+
         }
 
         private string OpenFile()
@@ -56,13 +59,28 @@ namespace RTF_redactor
 
                 if (of.ShowDialog() == DialogResult.OK)
                 {
+                    string selectedFile = of.FileName;
+                    AddFileToHistory(selectedFile);
                     return of.FileName;
+                   
                 }
             }
             return "none";
         }
+        private void AddFileToHistory(string filePath)
+        {
+            
+            if (!recentFiles.Contains(filePath))
+            {
+                recentFiles.Insert(0, filePath);
+            }
+            if (recentFiles.Count > 150)
+            {
+                recentFiles.RemoveAt(recentFiles.Count - 1);
+            }
 
-        private void typeFont_MouseClick(object sender, MouseEventArgs e)
+        }
+         private void typeFont_MouseClick(object sender, MouseEventArgs e)
         {
             var defaulFont = TextBox.Font;
             if (TextBox.SelectedText != null) // работает если мы выделили текст
@@ -74,19 +92,22 @@ namespace RTF_redactor
                         defaulFont.Size, FontStyle.Bold);
 
                 }
+                if (((Button)sender).Text == "Курсив")
+                {
+                    TextBox.SelectionFont = new Font(defaulFont.FontFamily,
+                        defaulFont.Size, FontStyle.Italic);
+                }
+                if (((Button)sender).Text == "Подчеркнутый")
+                {
+                    TextBox.SelectionFont = new Font(defaulFont.FontFamily,
+                        defaulFont.Size, FontStyle.Underline);
+                }
                 else
                 {
-                    if (((Button)sender).Text == "Курсив")
-                    {
-                        TextBox.SelectionFont = new Font(defaulFont.FontFamily,
-                        defaulFont.Size, FontStyle.Italic);
-                    }
-                    else
-                    {
                         TextBox.SelectionFont = new Font(defaulFont.FontFamily,
                         defaulFont.Size, FontStyle.Regular);
-                    }
                 }
+                
 
             }
         }
@@ -117,7 +138,6 @@ namespace RTF_redactor
 
         private void SaveFile()
         {
-            MessageBox.Show("Сохранить как...");
             SaveFileDialog sf = new SaveFileDialog();
             sf.Title = "Сохранить как...";
             sf.OverwritePrompt = true;
@@ -128,12 +148,15 @@ namespace RTF_redactor
             {
                 try
                 {
+                    string selectedFile = sf.FileName;
+                    AddFileToHistory(selectedFile);
                     TextBox.SaveFile(sf.FileName);
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
                 }
+
             }
         }
        private Image openPicture()
@@ -160,6 +183,35 @@ namespace RTF_redactor
         {
             Image backGround = openPicture();
             this.BackgroundImage = backGround;
+        }
+
+        private void buttonFontType_MouseClick(object sender, MouseEventArgs e)
+        {
+            FontDialog fontDialog = new FontDialog();
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+            {
+                Font newFont = new Font(fontDialog.Font.FontFamily, TextBox.Font.Size, TextBox.Font.Style);
+                TextBox.SelectionFont = fontDialog.Font;
+            }
+        }
+
+        private void openHistory_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Все файлы|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                if (recentFiles.Contains(selectedFilePath))
+                {
+                    MessageBox.Show("Выбран файл: " + selectedFilePath);
+                }
+                else
+                {
+                    MessageBox.Show("Файл не найден в списке недавних файлов.");
+                }
+            }
+
         }
     }
  

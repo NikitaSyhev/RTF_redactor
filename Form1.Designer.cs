@@ -38,11 +38,19 @@
             this.textSize = new System.Windows.Forms.TextBox();
             this.colorBtn = new System.Windows.Forms.Button();
             this.backgroundBtn = new System.Windows.Forms.Button();
+            this.underlinedFont = new System.Windows.Forms.Button();
+            this.buttonFontType = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip3 = new System.Windows.Forms.MenuStrip();
+            this.историяФайловToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // openBtn
             // 
-            this.openBtn.Location = new System.Drawing.Point(12, 12);
+            this.openBtn.Location = new System.Drawing.Point(12, 24);
             this.openBtn.Name = "openBtn";
             this.openBtn.Size = new System.Drawing.Size(122, 35);
             this.openBtn.TabIndex = 0;
@@ -52,7 +60,7 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(12, 71);
+            this.saveBtn.Location = new System.Drawing.Point(12, 100);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(122, 35);
             this.saveBtn.TabIndex = 1;
@@ -80,7 +88,7 @@
             // 
             // boldFont
             // 
-            this.boldFont.Location = new System.Drawing.Point(291, 71);
+            this.boldFont.Location = new System.Drawing.Point(291, 53);
             this.boldFont.Name = "boldFont";
             this.boldFont.Size = new System.Drawing.Size(75, 23);
             this.boldFont.TabIndex = 4;
@@ -90,7 +98,7 @@
             // 
             // italicsFont
             // 
-            this.italicsFont.Location = new System.Drawing.Point(291, 123);
+            this.italicsFont.Location = new System.Drawing.Point(291, 83);
             this.italicsFont.Name = "italicsFont";
             this.italicsFont.Size = new System.Drawing.Size(75, 23);
             this.italicsFont.TabIndex = 5;
@@ -109,7 +117,7 @@
             // 
             // textSize
             // 
-            this.textSize.Location = new System.Drawing.Point(183, 71);
+            this.textSize.Location = new System.Drawing.Point(183, 56);
             this.textSize.Name = "textSize";
             this.textSize.Size = new System.Drawing.Size(100, 20);
             this.textSize.TabIndex = 7;
@@ -117,7 +125,7 @@
             // 
             // colorBtn
             // 
-            this.colorBtn.Location = new System.Drawing.Point(183, 123);
+            this.colorBtn.Location = new System.Drawing.Point(183, 83);
             this.colorBtn.Name = "colorBtn";
             this.colorBtn.Size = new System.Drawing.Size(102, 23);
             this.colorBtn.TabIndex = 8;
@@ -135,11 +143,74 @@
             this.backgroundBtn.UseVisualStyleBackColor = true;
             this.backgroundBtn.Click += new System.EventHandler(this.backgroundBtn_Click);
             // 
+            // underlinedFont
+            // 
+            this.underlinedFont.Location = new System.Drawing.Point(291, 112);
+            this.underlinedFont.Name = "underlinedFont";
+            this.underlinedFont.Size = new System.Drawing.Size(75, 23);
+            this.underlinedFont.TabIndex = 10;
+            this.underlinedFont.Text = "Подчеркнутый";
+            this.underlinedFont.UseVisualStyleBackColor = true;
+            this.underlinedFont.MouseClick += new System.Windows.Forms.MouseEventHandler(this.typeFont_MouseClick);
+            // 
+            // buttonFontType
+            // 
+            this.buttonFontType.Location = new System.Drawing.Point(183, 112);
+            this.buttonFontType.Name = "buttonFontType";
+            this.buttonFontType.Size = new System.Drawing.Size(102, 23);
+            this.buttonFontType.TabIndex = 11;
+            this.buttonFontType.Text = "Выбор шрифта";
+            this.buttonFontType.UseVisualStyleBackColor = true;
+            this.buttonFontType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonFontType_MouseClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 48);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Location = new System.Drawing.Point(0, 24);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip2.TabIndex = 13;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // menuStrip3
+            // 
+            this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.историяФайловToolStripMenuItem});
+            this.menuStrip3.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip3.Name = "menuStrip3";
+            this.menuStrip3.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip3.TabIndex = 14;
+            this.menuStrip3.Text = "menuStrip3";
+            // 
+            // историяФайловToolStripMenuItem
+            // 
+            this.историяФайловToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openHistory});
+            this.историяФайловToolStripMenuItem.Name = "историяФайловToolStripMenuItem";
+            this.историяФайловToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.историяФайловToolStripMenuItem.Text = "История файлов";
+            // 
+            // openHistory
+            // 
+            this.openHistory.Name = "openHistory";
+            this.openHistory.Size = new System.Drawing.Size(180, 22);
+            this.openHistory.Text = "Открыть";
+            this.openHistory.Click += new System.EventHandler(this.openHistory_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonFontType);
+            this.Controls.Add(this.underlinedFont);
             this.Controls.Add(this.backgroundBtn);
             this.Controls.Add(this.colorBtn);
             this.Controls.Add(this.textSize);
@@ -150,9 +221,15 @@
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.openBtn);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip2);
+            this.Controls.Add(this.menuStrip3);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormTheme);
+            this.menuStrip3.ResumeLayout(false);
+            this.menuStrip3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +247,13 @@
         private System.Windows.Forms.TextBox textSize;
         private System.Windows.Forms.Button colorBtn;
         private System.Windows.Forms.Button backgroundBtn;
+        private System.Windows.Forms.Button underlinedFont;
+        private System.Windows.Forms.Button buttonFontType;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.MenuStrip menuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem историяФайловToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openHistory;
     }
 }
 
